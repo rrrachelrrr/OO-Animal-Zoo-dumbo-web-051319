@@ -25,13 +25,32 @@ class Zoo
   end
 
   def animal_species
+    animal_species = []
+    self.animals.each do |animal|
+      animal_species << animal.species
+    end
+    animal_species.uniq
   end
 
+  def find_by_species(species)
+    self.animals.find_all {|animal| animal.species == species }
+    # look for all animals of that species
+  end
 
+  def animal_nicknames
+    nickname_array = []
+    self.animals.each do |animal|
+      nickname_array << animal.nickname
+    end
+    nickname_array
+  end
+
+  def self.find_by_location(location)
+    @@all.select {|zoo_location| zoo_location.location == location }
+  end
 
 end
 
-bronx_zoo = Zoo.new("bronx zoo", "bronx")
 
 # A zoo should be initialized with a name and a location, which should both be passed as strings.
 # Zoo#location should return the location of the zoo instance.

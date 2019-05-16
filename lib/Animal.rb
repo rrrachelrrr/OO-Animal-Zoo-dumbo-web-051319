@@ -21,6 +21,10 @@ class Animal
     @location
   end
 
+  def self.find_by_species(species)
+    @@all.select { |animal| animal.species == species }
+  end
+
 
 end
 
